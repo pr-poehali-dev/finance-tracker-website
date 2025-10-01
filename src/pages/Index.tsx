@@ -10,9 +10,9 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 
 const Index = () => {
   const [expenses, setExpenses] = useState([
-    { id: 1, category: 'Продукты', amount: 5000, date: '2024-10-15' },
-    { id: 2, category: 'Транспорт', amount: 2500, date: '2024-10-20' },
-    { id: 3, category: 'Развлечения', amount: 3000, date: '2024-10-22' },
+    { id: 1, category: 'Groceries', amount: 5000, date: '2024-10-15' },
+    { id: 2, category: 'Transport', amount: 2500, date: '2024-10-20' },
+    { id: 3, category: 'Entertainment', amount: 3000, date: '2024-10-22' },
   ]);
 
   const budget = {
@@ -22,10 +22,10 @@ const Index = () => {
   };
 
   const categories = [
-    { name: 'Продукты', spent: 5000, limit: 15000, icon: 'ShoppingCart' },
-    { name: 'Транспорт', spent: 2500, limit: 8000, icon: 'Car' },
-    { name: 'Развлечения', spent: 3000, limit: 10000, icon: 'Film' },
-    { name: 'Коммунальные', spent: 0, limit: 7000, icon: 'Home' },
+    { name: 'Groceries', spent: 5000, limit: 15000, icon: 'ShoppingCart' },
+    { name: 'Transport', spent: 2500, limit: 8000, icon: 'Car' },
+    { name: 'Entertainment', spent: 3000, limit: 10000, icon: 'Film' },
+    { name: 'Utilities', spent: 0, limit: 7000, icon: 'Home' },
   ];
 
   return (
@@ -38,11 +38,11 @@ const Index = () => {
               <span className="text-2xl font-bold text-foreground">Finance Tracker</span>
             </div>
             <div className="hidden md:flex gap-6">
-              <a href="#dashboard" className="text-foreground hover:text-primary transition-colors">Главная</a>
-              <a href="#about" className="text-foreground hover:text-primary transition-colors">О нас</a>
-              <a href="#services" className="text-foreground hover:text-primary transition-colors">Услуги</a>
-              <a href="#blog" className="text-foreground hover:text-primary transition-colors">Блог</a>
-              <a href="#contact" className="text-foreground hover:text-primary transition-colors">Контакты</a>
+              <a href="#dashboard" className="text-foreground hover:text-primary transition-colors">Home</a>
+              <a href="#about" className="text-foreground hover:text-primary transition-colors">About</a>
+              <a href="#services" className="text-foreground hover:text-primary transition-colors">Services</a>
+              <a href="#blog" className="text-foreground hover:text-primary transition-colors">Blog</a>
+              <a href="#contact" className="text-foreground hover:text-primary transition-colors">Contact</a>
             </div>
           </div>
         </div>
@@ -53,25 +53,25 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h1 className="text-5xl md:text-6xl font-bold text-foreground leading-tight">
-                Управляйте финансами легко
+                Manage Your Finances Easily
               </h1>
               <p className="text-xl text-muted-foreground">
-                Отслеживайте расходы, планируйте бюджет и достигайте финансовых целей с нашим удобным трекером
+                Track expenses, plan budgets, and achieve financial goals with our convenient tracker
               </p>
               <div className="flex gap-4">
                 <Button size="lg" className="animate-scale-in">
                   <Icon name="Rocket" className="mr-2" size={20} />
-                  Начать сейчас
+                  Get Started
                 </Button>
                 <Button size="lg" variant="outline">
-                  Узнать больше
+                  Learn More
                 </Button>
               </div>
             </div>
             <div className="animate-scale-in">
               <img 
                 src="/img/c5f6ad49-5bc1-47ae-8e8b-14a7916a4a6a.jpg" 
-                alt="Управление финансами" 
+                alt="Financial Management" 
                 className="rounded-2xl shadow-2xl"
               />
             </div>
@@ -82,47 +82,47 @@ const Index = () => {
       <section id="dashboard" className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-foreground mb-4">Обзор бюджета</h2>
-            <p className="text-xl text-muted-foreground">Ваши финансы за текущий месяц</p>
+            <h2 className="text-4xl font-bold text-foreground mb-4">Budget Overview</h2>
+            <p className="text-xl text-muted-foreground">Your finances for the current month</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             <Card className="animate-fade-in hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-lg">Общий бюджет</CardTitle>
+                  <CardTitle className="text-lg">Total Budget</CardTitle>
                   <Icon name="DollarSign" className="text-primary" size={24} />
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-3xl font-bold text-foreground">{budget.total.toLocaleString()} ₽</p>
-                <p className="text-sm text-muted-foreground mt-2">Запланировано на месяц</p>
+                <p className="text-3xl font-bold text-foreground">${budget.total.toLocaleString()}</p>
+                <p className="text-sm text-muted-foreground mt-2">Planned for the month</p>
               </CardContent>
             </Card>
 
             <Card className="animate-fade-in hover:shadow-lg transition-shadow" style={{ animationDelay: '0.1s' }}>
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-lg">Потрачено</CardTitle>
+                  <CardTitle className="text-lg">Spent</CardTitle>
                   <Icon name="TrendingDown" className="text-destructive" size={24} />
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-3xl font-bold text-destructive">{budget.spent.toLocaleString()} ₽</p>
-                <p className="text-sm text-muted-foreground mt-2">{((budget.spent / budget.total) * 100).toFixed(1)}% от бюджета</p>
+                <p className="text-3xl font-bold text-destructive">${budget.spent.toLocaleString()}</p>
+                <p className="text-sm text-muted-foreground mt-2">{((budget.spent / budget.total) * 100).toFixed(1)}% of budget</p>
               </CardContent>
             </Card>
 
             <Card className="animate-fade-in hover:shadow-lg transition-shadow" style={{ animationDelay: '0.2s' }}>
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-lg">Осталось</CardTitle>
+                  <CardTitle className="text-lg">Remaining</CardTitle>
                   <Icon name="TrendingUp" className="text-primary" size={24} />
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-3xl font-bold text-primary">{budget.remaining.toLocaleString()} ₽</p>
-                <p className="text-sm text-muted-foreground mt-2">Доступно до конца месяца</p>
+                <p className="text-3xl font-bold text-primary">${budget.remaining.toLocaleString()}</p>
+                <p className="text-sm text-muted-foreground mt-2">Available until month end</p>
               </CardContent>
             </Card>
           </div>
@@ -130,8 +130,8 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-8">
             <Card>
               <CardHeader>
-                <CardTitle>Расходы по категориям</CardTitle>
-                <CardDescription>Контролируйте траты в каждой категории</CardDescription>
+                <CardTitle>Expenses by Category</CardTitle>
+                <CardDescription>Track spending in each category</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 {categories.map((category, index) => (
@@ -142,7 +142,7 @@ const Index = () => {
                         <span className="font-medium">{category.name}</span>
                       </div>
                       <span className="text-sm text-muted-foreground">
-                        {category.spent.toLocaleString()} / {category.limit.toLocaleString()} ₽
+                        ${category.spent.toLocaleString()} / ${category.limit.toLocaleString()}
                       </span>
                     </div>
                     <Progress value={(category.spent / category.limit) * 100} className="h-2" />
@@ -153,26 +153,26 @@ const Index = () => {
 
             <Card>
               <CardHeader>
-                <CardTitle>Добавить расход</CardTitle>
-                <CardDescription>Запишите новую транзакцию</CardDescription>
+                <CardTitle>Add Expense</CardTitle>
+                <CardDescription>Record a new transaction</CardDescription>
               </CardHeader>
               <CardContent>
                 <form className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="category">Категория</Label>
-                    <Input id="category" placeholder="Например: Продукты" />
+                    <Label htmlFor="category">Category</Label>
+                    <Input id="category" placeholder="E.g., Groceries" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="amount">Сумма</Label>
+                    <Label htmlFor="amount">Amount</Label>
                     <Input id="amount" type="number" placeholder="0" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="date">Дата</Label>
+                    <Label htmlFor="date">Date</Label>
                     <Input id="date" type="date" />
                   </div>
                   <Button className="w-full">
                     <Icon name="Plus" className="mr-2" size={18} />
-                    Добавить расход
+                    Add Expense
                   </Button>
                 </form>
               </CardContent>
@@ -187,26 +187,26 @@ const Index = () => {
             <div className="animate-fade-in">
               <img 
                 src="/img/3f63de1e-9bb0-4bf0-8cdc-761ca06c4086.jpg" 
-                alt="О нас" 
+                alt="About Us" 
                 className="rounded-2xl shadow-xl"
               />
             </div>
             <div className="space-y-6">
-              <h2 className="text-4xl font-bold text-foreground">О нашем сервисе</h2>
+              <h2 className="text-4xl font-bold text-foreground">About Our Service</h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Finance Tracker — это современный инструмент для управления личными финансами. Мы помогаем тысячам людей контролировать расходы, планировать бюджет и достигать финансовых целей.
+                Finance Tracker is a modern tool for managing personal finances. We help thousands of people control expenses, plan budgets, and achieve financial goals.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Наша миссия — сделать финансовое планирование простым и доступным для каждого. Минималистичный дизайн, интуитивный интерфейс и мощные инструменты аналитики — всё для вашего удобства.
+                Our mission is to make financial planning simple and accessible to everyone. Minimalist design, intuitive interface, and powerful analytics tools — everything for your convenience.
               </p>
               <div className="grid grid-cols-2 gap-4 pt-4">
                 <div className="text-center p-4 bg-white rounded-lg shadow-sm">
                   <p className="text-3xl font-bold text-primary">10K+</p>
-                  <p className="text-sm text-muted-foreground">Активных пользователей</p>
+                  <p className="text-sm text-muted-foreground">Active Users</p>
                 </div>
                 <div className="text-center p-4 bg-white rounded-lg shadow-sm">
                   <p className="text-3xl font-bold text-primary">95%</p>
-                  <p className="text-sm text-muted-foreground">Довольных клиентов</p>
+                  <p className="text-sm text-muted-foreground">Satisfied Clients</p>
                 </div>
               </div>
             </div>
@@ -217,19 +217,19 @@ const Index = () => {
       <section id="services" className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-foreground mb-4">Наши услуги</h2>
-            <p className="text-xl text-muted-foreground">Всё необходимое для управления финансами</p>
+            <h2 className="text-4xl font-bold text-foreground mb-4">Our Services</h2>
+            <p className="text-xl text-muted-foreground">Everything you need to manage your finances</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="hover:shadow-xl transition-all hover:-translate-y-1">
               <CardHeader>
                 <Icon name="PieChart" className="text-primary mb-4" size={40} />
-                <CardTitle>Отслеживание расходов</CardTitle>
+                <CardTitle>Expense Tracking</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Записывайте все траты и получайте детальную статистику по категориям. Визуализация расходов поможет найти зоны экономии.
+                  Record all expenses and get detailed statistics by category. Expense visualization helps identify areas for savings.
                 </p>
               </CardContent>
             </Card>
@@ -237,11 +237,11 @@ const Index = () => {
             <Card className="hover:shadow-xl transition-all hover:-translate-y-1">
               <CardHeader>
                 <Icon name="Target" className="text-primary mb-4" size={40} />
-                <CardTitle>Планирование бюджета</CardTitle>
+                <CardTitle>Budget Planning</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Устанавливайте лимиты по категориям, создавайте финансовые цели и следите за их достижением в реальном времени.
+                  Set limits by category, create financial goals, and track their achievement in real-time.
                 </p>
               </CardContent>
             </Card>
@@ -249,11 +249,11 @@ const Index = () => {
             <Card className="hover:shadow-xl transition-all hover:-translate-y-1">
               <CardHeader>
                 <Icon name="BarChart3" className="text-primary mb-4" size={40} />
-                <CardTitle>Аналитика и отчёты</CardTitle>
+                <CardTitle>Analytics & Reports</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Получайте подробные отчёты о своих финансах, анализируйте тренды и принимайте обоснованные решения.
+                  Get detailed reports on your finances, analyze trends, and make informed decisions.
                 </p>
               </CardContent>
             </Card>
@@ -261,11 +261,11 @@ const Index = () => {
             <Card className="hover:shadow-xl transition-all hover:-translate-y-1">
               <CardHeader>
                 <Icon name="Bell" className="text-primary mb-4" size={40} />
-                <CardTitle>Умные напоминания</CardTitle>
+                <CardTitle>Smart Reminders</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Настройте уведомления о превышении лимитов, предстоящих платежах и важных финансовых событиях.
+                  Set up notifications for limit overruns, upcoming payments, and important financial events.
                 </p>
               </CardContent>
             </Card>
@@ -273,11 +273,11 @@ const Index = () => {
             <Card className="hover:shadow-xl transition-all hover:-translate-y-1">
               <CardHeader>
                 <Icon name="Shield" className="text-primary mb-4" size={40} />
-                <CardTitle>Безопасность данных</CardTitle>
+                <CardTitle>Data Security</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Ваши финансовые данные надёжно защищены. Используем современные методы шифрования и аутентификации.
+                  Your financial data is securely protected. We use modern encryption and authentication methods.
                 </p>
               </CardContent>
             </Card>
@@ -285,11 +285,11 @@ const Index = () => {
             <Card className="hover:shadow-xl transition-all hover:-translate-y-1">
               <CardHeader>
                 <Icon name="Smartphone" className="text-primary mb-4" size={40} />
-                <CardTitle>Доступ везде</CardTitle>
+                <CardTitle>Access Anywhere</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Управляйте финансами с любого устройства. Адаптивный дизайн обеспечивает удобство на телефоне, планшете и ПК.
+                  Manage finances from any device. Responsive design ensures convenience on phone, tablet, and PC.
                 </p>
               </CardContent>
             </Card>
@@ -300,8 +300,8 @@ const Index = () => {
       <section id="blog" className="py-16 bg-gradient-to-br from-green-50 to-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-foreground mb-4">Блог</h2>
-            <p className="text-xl text-muted-foreground">Полезные статьи о финансах</p>
+            <h2 className="text-4xl font-bold text-foreground mb-4">Blog</h2>
+            <p className="text-xl text-muted-foreground">Useful articles about finance</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -310,15 +310,15 @@ const Index = () => {
                 <Icon name="BookOpen" className="text-primary" size={60} />
               </div>
               <CardHeader>
-                <CardTitle>5 правил эффективного бюджета</CardTitle>
-                <CardDescription>15 октября 2024</CardDescription>
+                <CardTitle>5 Rules for Effective Budgeting</CardTitle>
+                <CardDescription>October 15, 2024</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4">
-                  Узнайте основные принципы планирования бюджета, которые помогут вам контролировать финансы.
+                  Learn the key principles of budget planning that will help you control your finances.
                 </p>
                 <Button variant="outline" size="sm">
-                  Читать далее
+                  Read More
                   <Icon name="ArrowRight" className="ml-2" size={16} />
                 </Button>
               </CardContent>
@@ -329,15 +329,15 @@ const Index = () => {
                 <Icon name="TrendingUp" className="text-primary" size={60} />
               </div>
               <CardHeader>
-                <CardTitle>Как начать инвестировать</CardTitle>
-                <CardDescription>12 октября 2024</CardDescription>
+                <CardTitle>How to Start Investing</CardTitle>
+                <CardDescription>October 12, 2024</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4">
-                  Пошаговое руководство для начинающих инвесторов. Начните приумножать капитал уже сегодня.
+                  A step-by-step guide for beginner investors. Start growing your capital today.
                 </p>
                 <Button variant="outline" size="sm">
-                  Читать далее
+                  Read More
                   <Icon name="ArrowRight" className="ml-2" size={16} />
                 </Button>
               </CardContent>
@@ -348,15 +348,15 @@ const Index = () => {
                 <Icon name="Lightbulb" className="text-primary" size={60} />
               </div>
               <CardHeader>
-                <CardTitle>10 способов сэкономить</CardTitle>
-                <CardDescription>8 октября 2024</CardDescription>
+                <CardTitle>10 Ways to Save Money</CardTitle>
+                <CardDescription>October 8, 2024</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4">
-                  Простые и эффективные лайфхаки для экономии, которые не требуют жертв в качестве жизни.
+                  Simple and effective saving tips that don't require sacrificing your quality of life.
                 </p>
                 <Button variant="outline" size="sm">
-                  Читать далее
+                  Read More
                   <Icon name="ArrowRight" className="ml-2" size={16} />
                 </Button>
               </CardContent>
@@ -366,32 +366,32 @@ const Index = () => {
           <div className="mt-12 max-w-3xl mx-auto">
             <Card>
               <CardHeader>
-                <CardTitle className="text-center">Часто задаваемые вопросы</CardTitle>
+                <CardTitle className="text-center">Frequently Asked Questions</CardTitle>
               </CardHeader>
               <CardContent>
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem value="item-1">
-                    <AccordionTrigger>Как начать пользоваться трекером?</AccordionTrigger>
+                    <AccordionTrigger>How do I start using the tracker?</AccordionTrigger>
                     <AccordionContent>
-                      Просто зарегистрируйтесь, укажите свой месячный бюджет и начните добавлять расходы. Система автоматически создаст визуализацию и аналитику.
+                      Simply register, set your monthly budget, and start adding expenses. The system will automatically create visualization and analytics.
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-2">
-                    <AccordionTrigger>Безопасны ли мои данные?</AccordionTrigger>
+                    <AccordionTrigger>Is my data secure?</AccordionTrigger>
                     <AccordionContent>
-                      Да, мы используем современное шифрование данных и не передаём вашу информацию третьим лицам. Все данные хранятся на защищённых серверах.
+                      Yes, we use modern data encryption and do not share your information with third parties. All data is stored on secure servers.
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-3">
-                    <AccordionTrigger>Есть ли мобильное приложение?</AccordionTrigger>
+                    <AccordionTrigger>Is there a mobile app?</AccordionTrigger>
                     <AccordionContent>
-                      Веб-версия полностью адаптирована под мобильные устройства. Вы можете добавить сайт на домашний экран для быстрого доступа.
+                      The web version is fully adapted for mobile devices. You can add the site to your home screen for quick access.
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-4">
-                    <AccordionTrigger>Можно ли экспортировать данные?</AccordionTrigger>
+                    <AccordionTrigger>Can I export my data?</AccordionTrigger>
                     <AccordionContent>
-                      Да, вы можете в любой момент экспортировать все свои данные в форматах CSV, Excel или PDF для дальнейшего анализа.
+                      Yes, you can export all your data at any time in CSV, Excel, or PDF formats for further analysis.
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
@@ -405,9 +405,9 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-4xl font-bold text-foreground mb-6">Свяжитесь с нами</h2>
+              <h2 className="text-4xl font-bold text-foreground mb-6">Contact Us</h2>
               <p className="text-lg text-muted-foreground mb-8">
-                Есть вопросы или предложения? Мы всегда рады помочь!
+                Have questions or suggestions? We're always happy to help!
               </p>
               
               <div className="space-y-6">
@@ -422,16 +422,16 @@ const Index = () => {
                 <div className="flex items-start gap-4">
                   <Icon name="Phone" className="text-primary mt-1" size={24} />
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">Телефон</h3>
-                    <p className="text-muted-foreground">+7 (495) 123-45-67</p>
+                    <h3 className="font-semibold text-foreground mb-1">Phone</h3>
+                    <p className="text-muted-foreground">+1 (555) 123-4567</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start gap-4">
                   <Icon name="MapPin" className="text-primary mt-1" size={24} />
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">Адрес</h3>
-                    <p className="text-muted-foreground">Москва, ул. Примерная, д. 123</p>
+                    <h3 className="font-semibold text-foreground mb-1">Address</h3>
+                    <p className="text-muted-foreground">123 Financial St, New York, NY 10001</p>
                   </div>
                 </div>
               </div>
@@ -439,7 +439,7 @@ const Index = () => {
               <div className="mt-8">
                 <img 
                   src="/img/48ec0b4a-696b-425d-aac8-b0b02c9fdcbf.jpg" 
-                  alt="Финансовое образование" 
+                  alt="Financial Education" 
                   className="rounded-2xl shadow-lg"
                 />
               </div>
@@ -447,34 +447,34 @@ const Index = () => {
 
             <Card>
               <CardHeader>
-                <CardTitle>Напишите нам</CardTitle>
-                <CardDescription>Мы ответим в течение 24 часов</CardDescription>
+                <CardTitle>Write to Us</CardTitle>
+                <CardDescription>We'll respond within 24 hours</CardDescription>
               </CardHeader>
               <CardContent>
                 <form className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Имя</Label>
-                    <Input id="name" placeholder="Ваше имя" />
+                    <Label htmlFor="name">Name</Label>
+                    <Input id="name" placeholder="Your name" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
                     <Input id="email" type="email" placeholder="your@email.com" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="subject">Тема</Label>
-                    <Input id="subject" placeholder="Тема обращения" />
+                    <Label htmlFor="subject">Subject</Label>
+                    <Input id="subject" placeholder="Subject of inquiry" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="message">Сообщение</Label>
+                    <Label htmlFor="message">Message</Label>
                     <textarea 
                       id="message" 
                       className="w-full min-h-[120px] px-3 py-2 text-sm rounded-md border border-input bg-background"
-                      placeholder="Расскажите, чем мы можем помочь..."
+                      placeholder="Tell us how we can help..."
                     />
                   </div>
                   <Button className="w-full">
                     <Icon name="Send" className="mr-2" size={18} />
-                    Отправить сообщение
+                    Send Message
                   </Button>
                 </form>
               </CardContent>
@@ -492,40 +492,40 @@ const Index = () => {
                 <span className="text-xl font-bold">Finance Tracker</span>
               </div>
               <p className="text-gray-300 text-sm">
-                Управляйте своими финансами легко и эффективно
+                Manage your finances easily and effectively
               </p>
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4">Продукт</h4>
+              <h4 className="font-semibold mb-4">Product</h4>
               <ul className="space-y-2 text-sm text-gray-300">
-                <li><a href="#dashboard" className="hover:text-primary transition-colors">Дашборд</a></li>
-                <li><a href="#services" className="hover:text-primary transition-colors">Услуги</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Тарифы</a></li>
+                <li><a href="#dashboard" className="hover:text-primary transition-colors">Dashboard</a></li>
+                <li><a href="#services" className="hover:text-primary transition-colors">Services</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Pricing</a></li>
               </ul>
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4">Компания</h4>
+              <h4 className="font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-sm text-gray-300">
-                <li><a href="#about" className="hover:text-primary transition-colors">О нас</a></li>
-                <li><a href="#blog" className="hover:text-primary transition-colors">Блог</a></li>
-                <li><a href="#contact" className="hover:text-primary transition-colors">Контакты</a></li>
+                <li><a href="#about" className="hover:text-primary transition-colors">About</a></li>
+                <li><a href="#blog" className="hover:text-primary transition-colors">Blog</a></li>
+                <li><a href="#contact" className="hover:text-primary transition-colors">Contact</a></li>
               </ul>
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4">Поддержка</h4>
+              <h4 className="font-semibold mb-4">Support</h4>
               <ul className="space-y-2 text-sm text-gray-300">
-                <li><a href="#" className="hover:text-primary transition-colors">Помощь</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Документация</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Политика</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Help</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Documentation</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Privacy</a></li>
               </ul>
             </div>
           </div>
           
           <div className="border-t border-gray-700 pt-8 text-center text-sm text-gray-300">
-            <p>© 2024 Finance Tracker. Все права защищены.</p>
+            <p>© 2024 Finance Tracker. All rights reserved.</p>
           </div>
         </div>
       </footer>
